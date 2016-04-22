@@ -1,0 +1,27 @@
+{
+  "name": "firesentry",
+  "version": "1.0.0",
+  "description": "Firebase watcher with hot reloading",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "firewatch": "^1.0.0",
+    "yargs": "^4.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/casetext/firesentry.git"
+  },
+  "keywords": [
+    "firebase"
+  ],
+  "author": "daguej",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/casetext/firesentry/issues"
+  },
+  "homepage": "https://github.com/casetext/firesentry#readme"
+}
