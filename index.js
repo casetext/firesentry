@@ -9,7 +9,7 @@ function Sentry(opts) {
 	self.scripts = opts.scripts;
 	self.web = opts.web;
 	self.watchScripts = opts.watchScripts;
-	self.watchScriptsDelay = opts.watchScriptsDelay;
+	self.watchScriptsDelay = opts.watchScriptsDelay || 250;
 	var watcher = self.watcher = new FirebaseWatcher({
 		db: opts.db,
 		auth: opts.auth
@@ -18,13 +18,17 @@ function Sentry(opts) {
 	watcher.connect();
 
 	watcher.on('connected', function() {
-		console.log('Firebase connected');
+		console.log('Firewatch connected');
 		self.connected = true;
 	});
 
 	watcher.on('disconnected', function() {
-		console.log('Firebase disconnected');
+		console.log('Firewatch disconnected');
 		self.connected = false;
+	});
+
+	watcher.on('ready', function() {
+		console.log('Firewatch ready!');
 	});
 
 	if (self.watchScripts) {
