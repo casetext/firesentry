@@ -6,6 +6,8 @@
   "dependencies": {
     "express": "^4.13.4",
     "firewatch": "^1.0.0",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
     "yargs": "^4.6.0"
   },
   "scripts": {

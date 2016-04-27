@@ -1,5 +1,11 @@
 var express = require('express'),
+	passport = require('passport'),
+	passportHttp = require('passport-http'),
 	child_process = require('child_process');
+
+passport.use(new passportHttp.DigestStrategy(function(user, cb) {
+	cb(null, user, process.env.FIRESENTRY_TOKEN);
+}));
 
 exports = module.exports = function(sentry) {
 	var app = sentry.app = express();
@@ -9,7 +15,7 @@ exports = module.exports = function(sentry) {
 		else res.sendStatus(503);
 	});
 
-	app.post('/update', function(req, res) {
+	app.post('/update', passport.authenticate('digest', { session: false }), function(req, res) {
 		sentry.updating = true;
 		res.set('Content-Type', 'text/plain');
 
