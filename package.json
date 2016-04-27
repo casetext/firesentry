@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Firebase watcher with hot reloading",
   "main": "index.js",
+  "bin": {
+    "firesentry": "./bin/firesentry.js"
+  },
   "dependencies": {
     "express": "^4.13.4",
     "firewatch": "^1.0.0",
