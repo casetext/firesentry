@@ -1,4 +1,4 @@
-var FirebaseWatcher = require('firewatch'),
+var FirebaseWatcher = require('firebase-watch'),
 	web = require('./web'),
 	fs = require('fs'),
 	path = require('path');
