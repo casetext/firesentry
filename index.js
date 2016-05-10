@@ -3,6 +3,16 @@ var FirebaseWatcher = require('firebase-watch'),
 	fs = require('fs'),
 	path = require('path');
 
+function log() {
+	process.stdout.write(new Date().toISOString() + ' ');
+	console.log.apply(console, arguments);
+}
+
+function error() {
+	process.stderr.write(new Date().toISOString() + ' ');
+	console.error.apply(console, arguments);
+}
+
 
 function Sentry(opts) {
 	var self = this;
@@ -18,17 +28,21 @@ function Sentry(opts) {
 	watcher.connect();
 
 	watcher.on('connected', function() {
-		console.log('Firewatch connected');
+		log('Firewatch connected');
 		self.connected = true;
 	});
 
 	watcher.on('disconnected', function() {
-		console.log('Firewatch disconnected');
+		log('Firewatch disconnected');
 		self.connected = false;
 	});
 
+	watcher.on('serverReady', function() {
+		log('Server ready');
+	});
+	
 	watcher.on('ready', function() {
-		console.log('Firewatch ready!');
+		log('Firewatch ready!');
 	});
 
 	if (self.watchScripts) {
@@ -61,13 +75,13 @@ Sentry.prototype.reload = function() {
 				try {
 					var exports = require(path.join(self.scripts, file));
 					exports(self.watcher);
-					console.log('Loaded ' + file);
+					log('Loaded ' + file);
 				} catch(ex) {
-					console.error('Error loading ' + file + '\n' + ex.stack);
+					error('Error loading ' + file + '\n' + ex.stack);
 				}
 			}
 		});
-		console.log(self.watcher.watchCount + ' watchers.');
+		log(self.watcher.watchCount + ' watchers.');
 	});
 };
 

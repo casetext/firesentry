@@ -1,6 +1,6 @@
 {
   "name": "firesentry",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Firebase watcher with hot reloading",
   "main": "index.js",
   "bin": {
