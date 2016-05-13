@@ -26,6 +26,7 @@ function Sentry(opts) {
 	});
 	self.reload();
 	watcher.connect();
+	log('Starting firewatch for ' + opts.db);
 
 	watcher.on('connected', function() {
 		log('Firewatch connected');
