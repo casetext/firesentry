@@ -1,6 +1,6 @@
 {
   "name": "firesentry",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Firebase watcher with hot reloading",
   "main": "index.js",
   "bin": {
@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "express": "^4.13.4",
-    "firebase-watch": "^1.0.1",
+    "firebase-watch": "^2.0.0",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
     "yargs": "^4.6.0"

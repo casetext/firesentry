@@ -37,10 +37,6 @@ function Sentry(opts) {
 		log('Firewatch disconnected');
 		self.connected = false;
 	});
-
-	watcher.on('serverReady', function() {
-		log('Server ready');
-	});
 	
 	watcher.on('ready', function() {
 		log('Firewatch ready!');
